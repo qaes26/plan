@@ -1,0 +1,267 @@
+body {
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0a192f; /* لون خلفية داكن مشابه للفضاء ولكن ليس أسود بالكامل */
+    color: #e0e0e0;
+    line-height: 1.8;
+    overflow-x: hidden; /* لمنع ظهور شريط التمرير الأفقي بسبب الورود */
+    position: relative; /* مهم لـ .falling-roses-background */
+}
+
+/* --- خلفية الورود المتساقطة --- */
+.falling-roses-background {
+    position: fixed; /* يجعلها تملأ الشاشة وتبقى ثابتة */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* لإخفاء الورود التي تخرج من الشاشة */
+    z-index: -1; /* لجعلها خلف المحتوى */
+}
+
+.rose {
+    position: absolute;
+    top: -50px; /* تبدأ من فوق الشاشة */
+    /* استخدام رمز Unicode للوردة، يمكنك البحث عن رموز أخرى */
+    /* أو إنشاء شكل وردة باستخدام CSS borders and pseudo-elements */
+    content: '🌹'; /* رمز وردة - قد لا يكون أزرقًا افتراضيًا */
+    font-size: 20px; /* حجم الوردة */
+    color: #6495ED; /* CornflowerBlue - لون أزرق جميل */
+    opacity: 0.7; /* شفافية طفيفة */
+    animation: fall linear infinite;
+    user-select: none; /* لمنع تحديد الورود كنص */
+}
+
+/* إنشاء عدة ورود بمواقع وأوقات تأخير مختلفة */
+.rose:nth-child(1) { left: 10%; animation-duration: 10s; animation-delay: 0s; font-size: 22px; }
+.rose:nth-child(2) { left: 20%; animation-duration: 8s;  animation-delay: -2s; color: #4682B4; } /* SteelBlue */
+.rose:nth-child(3) { left: 30%; animation-duration: 12s; animation-delay: -5s; font-size: 18px; }
+.rose:nth-child(4) { left: 40%; animation-duration: 7s;  animation-delay: -1s; color: #87CEEB; } /* SkyBlue */
+.rose:nth-child(5) { left: 50%; animation-duration: 11s; animation-delay: -3s; }
+.rose:nth-child(6) { left: 60%; animation-duration: 9s;  animation-delay: -4s; font-size: 24px; color: #ADD8E6; } /* LightBlue */
+.rose:nth-child(7) { left: 70%; animation-duration: 13s; animation-delay: -6s; }
+.rose:nth-child(8) { left: 80%; animation-duration: 6s;  animation-delay: 0.5s; font-size: 20px; }
+.rose:nth-child(9) { left: 90%; animation-duration: 10s; animation-delay: -1.5s; color: #B0E0E6; } /* PowderBlue */
+.rose:nth-child(10) { left: 5%; animation-duration: 9s; animation-delay: -7s; font-size: 21px; }
+.rose:nth-child(11) { left: 15%; animation-duration: 11s; animation-delay: -0.5s; color: #5F9EA0; } /* CadetBlue */
+.rose:nth-child(12) { left: 25%; animation-duration: 7s; animation-delay: -2.5s; font-size: 19px; }
+.rose:nth-child(13) { left: 35%; animation-duration: 13s; animation-delay: -5.5s; }
+.rose:nth-child(14) { left: 45%; animation-duration: 8s; animation-delay: -1.2s; color: #AFEEEE; } /* PaleTurquoise */
+.rose:nth-child(15) { left: 55%; animation-duration: 10s; animation-delay: -3.8s; font-size: 23px; }
+
+
+/* أنيميشن تساقط الوردة */
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg); /* 100vh لجعلها تتساقط لأسفل الشاشة بالكامل */
+        opacity: 0;
+    }
+}
+/* --- نهاية خلفية الورود المتساقطة --- */
+
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(10, 25, 50, 0.85); /* خلفية شبه شفافة للمحتوى */
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(100, 150, 255, 0.4);
+    position: relative; /* مهم ليكون فوق الخلفية */
+    z-index: 1; /* ليكون المحتوى فوق الورود */
+}
+
+/* ... باقي كود CSS للمحتوى والامتحان يبقى كما هو ... */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(100, 150, 255, 0.5);
+}
+
+header .logo {
+    max-width: 100px;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    border: 3px solid #6495ED;
+}
+
+header h1 {
+    margin: 10px 0 5px;
+    color: #ADD8E6;
+    font-size: 1.8em;
+}
+
+header h2 {
+    margin: 5px 0;
+    color: #B0C4DE;
+    font-size: 1.3em;
+}
+
+main h3 {
+    color: #87CEFA;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(135, 206, 250, 0.4);
+    font-size: 1.4em;
+}
+
+main h4 {
+    color: #AFEEEE;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+main h5 {
+    color: #E0FFFF;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+    padding-right: 15px;
+}
+
+.page-content {
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: rgba(20, 40, 70, 0.75);
+    border-radius: 8px;
+}
+
+.page-indicator {
+    font-size: 0.8em;
+    color: #778899;
+    text-align: left;
+    margin-top: 15px;
+}
+
+ul, ol {
+    padding-right: 20px;
+}
+ul { list-style-type: '✧ '; }
+ul ul { list-style-type: '◈ '; margin-top: 5px; }
+ol { list-style-type: decimal-leading-zero; }
+ol ol, ul ol { list-style-type: lower-alpha; margin-top: 5px; }
+
+
+li {
+    margin-bottom: 10px;
+}
+p {
+    margin-bottom: 12px;
+}
+
+.section-divider {
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, rgba(100, 150, 255, 0), rgba(100, 150, 255, 0.75), rgba(100, 150, 255, 0));
+    margin: 40px 0;
+}
+
+#quiz-section {
+    background-color: rgba(15, 30, 60, 0.85);
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+#quiz-section h2 {
+    text-align: center;
+    color: #98FB98;
+    margin-bottom: 25px;
+}
+
+.quiz-question {
+    margin-bottom: 25px;
+    padding: 15px;
+    background-color: rgba(25, 50, 80, 0.9);
+    border-radius: 6px;
+    border-left: 5px solid #6495ED;
+}
+
+.quiz-question p {
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #F0F8FF;
+}
+
+.quiz-options label {
+    display: block;
+    margin-bottom: 8px;
+    padding: 8px;
+    background-color: rgba(40, 70, 110, 0.7);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.quiz-options label:hover {
+    background-color: rgba(60, 90, 130, 0.9);
+}
+
+.quiz-options input[type="radio"] {
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+#submit-quiz {
+    display: block;
+    width: 200px;
+    margin: 30px auto 20px;
+    padding: 12px 20px;
+    background-color: #32CD32;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#submit-quiz:hover {
+    background-color: #228B22;
+}
+
+#quiz-result {
+    margin-top: 20px;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.correct-answer {
+    background-color: rgba(60, 179, 113, 0.3);
+    color: #98FB98;
+}
+
+.incorrect-answer {
+    background-color: rgba(255, 99, 71, 0.3);
+    color: #FFA07A;
+}
+.highlight-correct {
+    background-color: rgba(60, 179, 113, 0.7) !important;
+    color: white !important;
+    border: 1px solid #98FB98;
+}
+.highlight-user-incorrect {
+     background-color: rgba(255, 99, 71, 0.7) !important;
+    color: white !important;
+    border: 1px solid #FFA07A;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(100, 150, 255, 0.3);
+    font-size: 0.9em;
+    color: #B0C4DE;
+}
